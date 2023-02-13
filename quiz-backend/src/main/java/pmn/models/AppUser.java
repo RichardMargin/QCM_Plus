@@ -22,6 +22,8 @@ public class AppUser {
 	private String firstName;
 	private String company;
 	private String password;
+
+	@Enumerated(EnumType.STRING)
 	private Role role;
 	private Boolean isActive;
 
