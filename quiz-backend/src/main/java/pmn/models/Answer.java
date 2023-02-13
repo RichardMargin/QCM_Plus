@@ -8,22 +8,16 @@ import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-public class Response {
+public class Answer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	private String corps;
-
-	private Question question;
-	
-	private boolean isCorrect;
+	private String content;
+	private Boolean isCorrect;
 }

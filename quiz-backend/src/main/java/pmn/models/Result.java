@@ -10,26 +10,20 @@ import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Result {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private Integer nbrRightAnswers;
+	private Integer nbrWrongAnswers;
+	private Integer nbrUnanswered;
+	private LocalDate realisationDate;
+	private String timeUsed;
 
-	private Integer nbrRightAnswer;
-
-	private Integer nbrWrongInteger;
-
-	private Integer nbrNotAswer;
-	
-	private LocalDate date;
-	
-	private String timeUsed; 
 }
