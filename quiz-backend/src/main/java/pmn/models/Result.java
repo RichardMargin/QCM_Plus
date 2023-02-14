@@ -26,5 +26,6 @@ public class Result implements Serializable {
 	private Integer nbrUnanswered;
 	private LocalDate realisationDate;
 	private String timeUsed;
+	private Integer score;
 
 }
