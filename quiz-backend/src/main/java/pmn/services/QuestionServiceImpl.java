@@ -3,7 +3,6 @@ package pmn.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pmn.models.Question;
-import pmn.repositories.AppUserRepository;
 import pmn.repositories.QuestionRepository;
 
 import java.util.List;

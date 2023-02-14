@@ -28,11 +28,4 @@ public class AppUser implements Serializable {
 	private Role role;
 	private Boolean isActive;
 
-	@OneToMany
-	@JoinColumn(name = "appUser_id")
-	private List<UserAnswer> userAnswers;
-
-	@OneToMany
-	@JoinColumn(name = "appUser_id")
-	private List<Result> results;
 }

@@ -2,9 +2,12 @@ package pmn.models;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.io.Serializable;
 import java.util.List;
@@ -22,13 +25,5 @@ public class Quiz implements Serializable {
 	private String description;
 	private Boolean isShared;
 	private Boolean isActive;
-
-	@OneToMany
-	@JoinColumn(name = "quiz_id")
-	private List<Question> questions;
-
-	@OneToMany
-	@JoinColumn(name = "quiz_id")
-	private List<Result> results;
 
 }
