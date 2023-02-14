@@ -25,4 +25,8 @@ public class Question implements Serializable {
 	@JoinColumn(name = "question_id")
 	private List<Answer> answers;
 
+	@OneToMany
+	@JoinColumn(name = "question_id")
+	private List<UserAnswer> userAnswers;
+
 }
