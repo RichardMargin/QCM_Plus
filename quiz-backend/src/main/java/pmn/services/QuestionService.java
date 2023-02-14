@@ -11,4 +11,6 @@ public interface QuestionService {
     Optional<Question> findById(Long id);
     Question save(Question question);
 
+    List<Question> findAllByQuizId(Long id);
+
 }
