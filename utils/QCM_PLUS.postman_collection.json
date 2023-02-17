@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "d7b41b41-f8ec-457e-a684-b6e68beecc81",
+		"name": "QCM_PLUS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20653277"
+	},
+	"item": [
+		{
+			"name": "answer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9090/api/answer",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"answer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "appUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9090/api/appUser",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"appUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "question",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9090/api/question",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"question"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "quiz",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9090/api/quiz",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"quiz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "result",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9090/api/u",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"u"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "userAnswer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9090/api/userAnswer",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"userAnswer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

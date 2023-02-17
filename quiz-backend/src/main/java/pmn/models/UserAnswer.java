@@ -1,5 +1,6 @@
 package pmn.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,5 +20,13 @@ public class UserAnswer implements Serializable {
     private Long id;
     private Boolean isCorrect;
     private Boolean hasAnswered;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Question question;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private AppUser appUser;
 
 }
