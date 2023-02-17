@@ -20,7 +20,6 @@ public class QuizController {
 
     @GetMapping
     public List<Quiz> findAll() {
-        System.out.println("Test");
         return quizService.findAll();
     }
 
