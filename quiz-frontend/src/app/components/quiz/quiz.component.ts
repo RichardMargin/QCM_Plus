@@ -29,10 +29,8 @@ throw new Error('Method not implemented.');
 
   ngOnInit(): void {
     this.quizService.getAllQuiz().subscribe((res) => {
-                            
-      console.log("Test" + res);
       this.quizList = res;
-    }, (error)=>{console.log(error);  });
+    });
 
     /*this.quizList =[
       { id: UUID.UUID(), name: 'QUIZ JAVA', description:" DESCRIPTION ", isShared:true, isActive:false },
@@ -50,7 +48,7 @@ throw new Error('Method not implemented.');
     } */
   }
 
-  updateQuiz(arg0: string) {
+  update(arg0: string) {
     throw new Error('mofidier un quiz form');
   }
   gotToPage(_t46: number) {
