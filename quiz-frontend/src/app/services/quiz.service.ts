@@ -25,8 +25,8 @@ export class QuizService {
   }
 
   /* GET ALL */
-  getAllQuiz():Observable<any> {
-    return this.http.get("http://localhost:9090/api/quiz");
+  getAllQuiz(): Observable<Quiz[]> {
+    return this.http.get<Quiz[]>(Constants.URL + 'quiz');
   }
 
   /* GET ALL ACTIVE */
@@ -37,5 +37,4 @@ export class QuizService {
   getAllInactiveQuiz() {
     return this.http.get<Quiz[]>(Constants.URL + 'quiz/inactive');
   }
-  
 }

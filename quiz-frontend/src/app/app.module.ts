@@ -30,6 +30,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { QuizFormComponent } from './components/quiz/quiz-form/quiz-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResultComponent } from './components/result/result.component';
+import { ExamComponent } from './components/exam/exam.component';
+import { QuestionFormComponent } from './components/question/question-form/question-form.component';
+import { AppUserFormComponent } from './components/app-user/app-user-form/app-user-form.component';
 
 
 
@@ -46,6 +49,9 @@ import { ResultComponent } from './components/result/result.component';
     LoginComponent,
     QuizFormComponent,
     ResultComponent,
+    ExamComponent,
+    QuestionFormComponent,
+    AppUserFormComponent,
   ],
   imports: [
     BrowserModule,

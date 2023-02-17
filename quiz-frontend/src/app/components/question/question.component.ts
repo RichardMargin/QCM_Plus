@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UUID } from 'angular2-uuid';
 import { Question } from 'src/app/models/question';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -14,7 +15,8 @@ export class QuestionComponent implements OnInit {
   totalPages: number = 0;
   currentPage: number = 0;
 
-  constructor(public authenticationService: AuthenticationService) {}
+  constructor(public authenticationService: AuthenticationService,
+    private router: Router) {}
   ngOnInit(): void {
     this.questionList  =[
       { id: UUID.UUID(), content: 'Qui a creér Java',  isActive:false },
@@ -27,7 +29,7 @@ export class QuestionComponent implements OnInit {
   }
 
   newQuestion() {
-    throw new Error('Method not implemented.');
+    this.router.navigateByUrl("/home/questionForm");
   }
   updateQuestion(arg0: string) {
     throw new Error('Method not implemented.');
