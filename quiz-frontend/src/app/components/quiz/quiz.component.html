@@ -1,0 +1,48 @@
+<div class="container mt-5">
+  <ng-template #errors>
+    <div class="text-danger">{{errormessage}}</div>
+  </ng-template>
+  <button (click)="newQuiz()" class="btn btn-primary m-3">CRÉER UN QUESTIONNAIRE <i class="bi bi-pencil-fill"></i></button>
+  <div class="card" *ngIf="quizList; else errors">
+    <div class="card-header m-3">LISTE DES QUESTIONNAIRES </div>
+    <div class="card-body">
+      <table class="table table-hover ">
+        <thead>
+          <tr>
+            <th>NOM</th>
+            <th>DESCRIPTION</th>
+            <th>PARTAGE</th>
+            <th>STATUS</th>
+            <th>MODIFIER</th>
+            <th>QUESTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let quiz of quizList">
+            <td>{{quiz.name}}</td>
+            <td>{{quiz.description}}</td> 
+            <td>
+              <!-- <i *ngIf="quiz.isShared" class="bi bi-heart-fill text-success"></i>
+              <i *ngIf="!quiz.isShared" class="bi bi-heart-fill text-primary"></i> -->
+              <span *ngIf="quiz.isShared==false">Visible par stagiaire</span>
+              <span *ngIf="quiz.isShared==true">Non visible par stagiaire</span>
+            </td>
+            <td>
+              <span *ngIf="quiz.isActive==false">Inactif</span>
+              <span *ngIf="quiz.isActive==true">Actif</span>
+            </td>
+            <td><button (click)="update(quiz.id)" class="btn btn-success"><i class="bi bi-pencil-fill"></i></button></td>
+            <td><button (click)="question()" class="btn btn-success"><i class="bi bi-plus-circle-fill"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+      <ul class="nav nav-pills">
+        <li *ngFor="let item of [].constructor(this.totalPages); let i=index">
+          <a (click)="gotToPage(i)" [ngClass]="i==currentPage ? 'btn-primary' : 'btn-outline-primary'"
+            class="btn ms-1 mt-1">{{i}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>

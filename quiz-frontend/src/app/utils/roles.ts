@@ -1,4 +1,4 @@
-export enum Autority{
-    ADMIN = "ADMINISTRATOR",
-    USER = "INTERN",
+export enum Autority {
+  ADMIN = 'ADMINISTRATOR',
+  USER = 'INTERN',
 }
