@@ -1,38 +1,48 @@
-<table mat-table [dataSource]="dataSource" matSort 
-       class="mat-elevation-z8">
+<div class="container mt-5">
+  <ng-template #errors>
+    <div class="text-danger">{{errormessage}}</div>
+  </ng-template>
+  <button (click)="newQuiz()" class="btn btn-primary m-3">CRÉER UN QUESTIONNAIRE <i class="bi bi-pencil-fill"></i></button>
+  <div class="card" *ngIf="quizList; else errors">
+    <div class="card-header m-3">LISTE DES QUESTIONNAIRES </div>
+    <div class="card-body">
+      <table class="table table-hover ">
+        <thead>
+          <tr>
+            <th>NOM</th>
+            <th>DESCRIPTION</th>
+            <th>PARTAGE</th>
+            <th>STATUS</th>
+            <th>MODIFIER</th>
+            <th>QUESTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let quiz of quizList">
+            <td>{{quiz.name}}</td>
+            <td>{{quiz.description}}</td> 
+            <td>
+              <!-- <i *ngIf="quiz.isShared" class="bi bi-heart-fill text-success"></i>
+              <i *ngIf="!quiz.isShared" class="bi bi-heart-fill text-primary"></i> -->
+              <span *ngIf="quiz.isShared==false">Visible par stagiaire</span>
+              <span *ngIf="quiz.isShared==true">Non visible par stagiaire</span>
+            </td>
+            <td>
+              <span *ngIf="quiz.isActive==false">Inactif</span>
+              <span *ngIf="quiz.isActive==true">Actif</span>
+            </td>
+            <td><button (click)="update(quiz.id)" class="btn btn-success"><i class="bi bi-pencil-fill"></i></button></td>
+            <td><button (click)="question()" class="btn btn-success"><i class="bi bi-plus-circle-fill"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+      <ul class="nav nav-pills">
+        <li *ngFor="let item of [].constructor(this.totalPages); let i=index">
+          <a (click)="gotToPage(i)" [ngClass]="i==currentPage ? 'btn-primary' : 'btn-outline-primary'"
+            class="btn ms-1 mt-1">{{i}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
-      No.
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-  </ng-container>
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
-      Name
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  </ng-container>
-
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
-      Weight
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-  </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
-      Symbol
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+</div>
