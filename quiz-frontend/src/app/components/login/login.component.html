@@ -1,0 +1,24 @@
+<div class="container  mt-5">
+    <div class="col-md-6 offset-md-3">
+        <div class="text-danger" *ngIf="errormessage">{{errormessage}}</div>
+        <div class="card">
+            <div class="card-header h2">Se connecter</div>
+            <div class="card-body">
+                <form [formGroup]="loginForm" (ngSubmit)="connect()">
+                    <div class="mb-3">
+                        <label class="form-label">Nom d'utilisateur</label>
+                        <input class="form-control" type="text" formControlName="username" id="username"
+                            placeholder="Entrer un nom d'utilisateur" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Mot de passe</label>
+                        <input class="form-control" type="password" formControlName="password" id="password"
+                            placeholder="Entrer un mot de passe" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary m-1">Valider</button>
+                    <button type="reset" class="btn btn-primary">Annuler</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

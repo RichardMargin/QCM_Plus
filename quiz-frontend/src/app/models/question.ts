@@ -1,2 +1,5 @@
-export class Question {
+export interface Question {
+  id: number;
+  content: string;
+  isActive: boolean;
 }
