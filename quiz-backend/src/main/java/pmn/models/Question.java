@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.SelectBeforeUpdate;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Data
@@ -25,5 +25,9 @@ public class Question implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
 	private Quiz quiz;
+
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "question_id")
+	private List<Answer> answers;
 
 }

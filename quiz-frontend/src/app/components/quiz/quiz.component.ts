@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { UUID } from 'angular2-uuid';
 import { Quiz } from 'src/app/models/quiz';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { QuizService } from '../../services/quiz.service';
 
 @Component({
   selector: 'app-quiz',
@@ -24,17 +25,22 @@ throw new Error('Method not implemented.');
   totalPages: number = 0;
   currentPage: number = 0;
 
-  constructor(public authenticationService: AuthenticationService) {}
+  constructor(private authenticationService: AuthenticationService, private quizService: QuizService) {}
 
   ngOnInit(): void {
+    this.quizService.getAllQuiz().subscribe((res) => {
+                            
+      console.log("Test" + res);
+      this.quizList = res;
+    }, (error)=>{console.log(error);  });
 
-    this.quizList =[
+    /*this.quizList =[
       { id: UUID.UUID(), name: 'QUIZ JAVA', description:" DESCRIPTION ", isShared:true, isActive:false },
       { id: UUID.UUID(), name: 'QUIZ SPRIND', description:" DESCRIPTION ", isShared:false, isActive:true },
       { id: UUID.UUID(), name: 'QUIZ SECURITY ', description:" DESCRIPTION ", isShared:true, isActive:false },
       { id: UUID.UUID(), name: 'QUIZ ANGULAR', description:" DESCRIPTION ", isShared:false, isActive:true },
       { id: UUID.UUID(), name: 'QUIZ JWT', description:" DESCRIPTION ", isShared:true, isActive:true },
-    ];
+    ];*/
    /*  for (let index = 0; index < 10; index++) {
       this.quizList.push({ id: UUID.UUID(), name: 'QUIZ JAVA', description:" DESCRIPTION ", isShared:true, isActive:false });
        this.quizList.push({ id: UUID.UUID(), name: 'QUIZ SPRIND', description:" DESCRIPTION ", isShared:false, isActive:true });

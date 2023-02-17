@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/quiz")
 public class QuizController {
 
@@ -19,6 +20,7 @@ public class QuizController {
 
     @GetMapping
     public List<Quiz> findAll() {
+        System.out.println("Test");
         return quizService.findAll();
     }
 

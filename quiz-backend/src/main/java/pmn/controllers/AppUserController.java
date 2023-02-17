@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/appUser")
 public class AppUserController {
 
@@ -42,4 +43,3 @@ public class AppUserController {
     }
 
 }
-

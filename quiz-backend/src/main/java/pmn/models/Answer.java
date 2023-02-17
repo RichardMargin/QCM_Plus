@@ -21,8 +21,4 @@ public class Answer implements Serializable {
 	private String content;
 	private Boolean isCorrect;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonIgnore
-	private Question question;
-
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
 import { Quiz } from '../models/quiz';
 import { Constants } from '../utils/constants';
 
@@ -24,8 +25,8 @@ export class QuizService {
   }
 
   /* GET ALL */
-  getAllQuiz() {
-    return this.http.get<Quiz[]>(Constants.URL + 'quiz');
+  getAllQuiz():Observable<any> {
+    return this.http.get("http://localhost:9090/api/quiz");
   }
 
   /* GET ALL ACTIVE */
@@ -36,4 +37,5 @@ export class QuizService {
   getAllInactiveQuiz() {
     return this.http.get<Quiz[]>(Constants.URL + 'quiz/inactive');
   }
+  
 }
