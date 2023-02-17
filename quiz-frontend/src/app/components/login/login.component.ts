@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit{
 
   loginForm!: FormGroup;
   errormessage:string="";
+   showPassword: boolean = false;
   
   constructor(
     private fb : FormBuilder,
@@ -43,5 +44,11 @@ export class LoginComponent implements OnInit{
         },
       });
 
+    }
+
+    btnShowHidePassword(){
+      if(this.showPassword){
+        //document.getElementById("password"); 
+      }
     }
 }

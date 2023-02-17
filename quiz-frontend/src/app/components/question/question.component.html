@@ -1,1 +1,42 @@
-<p>question works!</p>
+<div class="container mt-5">
+    <ng-template #errors>
+      <div class="text-danger">{{errormessage}}</div>
+    </ng-template>
+    <button (click)="newQuestion()" class="btn btn-primary m-3">CRÉER UNE QUESTION <i class="bi bi-pencil-fill"></i></button>
+    <div class="card" *ngIf="questionList; else errors">
+      <div class="card-header m-3">LISTE DES QUESTIONS </div>
+      <div class="card-body">
+        <table class="table table-hover ">
+          <thead>
+            <tr>
+              <th>QUESTION</th>
+              <th>STATUS</th>
+              <th>MODIFIER</th>
+              <th>SUPPRIMER</th>
+              <th>REPONSES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let question of questionList">
+              <td>{{question.content}}</td>
+              <td>
+                <span *ngIf="question.isActive==false">Inactif</span>
+                <span *ngIf="question.isActive==true">Actif</span>
+              </td>
+              <td><button (click)="updateQuestion(question.id)" class="btn btn-success"><i class="bi bi-pencil-fill"></i></button></td>
+              <td><button (click)="deleteQuestion(question.id)" class="btn btn-success"><i class="bi bi-trash3-fill"></i></button></td>
+              <td><button (click)="seeAnswer()" class="btn btn-success"><i class="bi bi-plus-circle-fill"></i></button></td>
+            </tr>
+          </tbody>
+        </table>
+        <ul class="nav nav-pills">
+          <li *ngFor="let item of [].constructor(this.totalPages); let i=index">
+            <a (click)="gotToPage(i)" [ngClass]="i==currentPage ? 'btn-primary' : 'btn-outline-primary'"
+              class="btn ms-1 mt-1">{{i}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+  </div>
+

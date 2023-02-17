@@ -50,7 +50,7 @@ throw new Error('Method not implemented.');
     } */
   }
 
-  update(arg0: string) {
+  updateQuiz(arg0: string) {
     throw new Error('mofidier un quiz form');
   }
   gotToPage(_t46: number) {
