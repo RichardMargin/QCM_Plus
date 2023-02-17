@@ -46,8 +46,11 @@ export class AuthenticationService {
   }
 
   isAdmin(): boolean{
-    console.log(this.authenticatedUser?.role)
     return this.authenticatedUser?.role == Autority.ADMIN ? true:false;
+  }
+
+  isIntern(): boolean{
+    return this.authenticatedUser?.role == Autority.USER ? true:false;
   }
 
   logout(): Observable<boolean> {
