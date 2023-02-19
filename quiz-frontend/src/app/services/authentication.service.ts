@@ -14,7 +14,9 @@ export class AuthenticationService {
 
   constructor() {
     this.users.push({id: UUID.UUID(), lastName: 'sarah', firstName: 'JANE', company: 'COAPGEMINI', password: 'password', role:'ADMINISTRATOR'});
+    this.users.push({id: UUID.UUID(), lastName: 'momo', firstName: 'JANE', company: 'COAPGEMINI', password: 'momo', role:'ADMINISTRATOR'});
     this.users.push({id: UUID.UUID(), lastName: 'DOE', firstName: 'JOHN', company: 'COAPGEMINI', password: 'PASSWORD2', role:'INTERN'});
+    this.users.push({id: UUID.UUID(), lastName: 'moha', firstName: 'JOHN', company: 'COAPGEMINI', password: 'momo', role:'INTERN'});
     this.users.push({id: UUID.UUID(), lastName: 'GELLER', firstName: 'MONICA', company: 'COAPGEMINI', password: 'PASSWORD3', role:'INTERN'});
     this.users.push({id: UUID.UUID(), lastName: 'GELLER', firstName: 'ROSS', company: 'COAPGEMINI', password: 'PASSWORD4', role:'INTERN'});
     this.users.push({id: UUID.UUID(), lastName: 'BUFFET', firstName: 'PHOEBE', company: 'COAPGEMINI', password: 'PASSWORD5', role:'ADMIN'});

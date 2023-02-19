@@ -1,1 +1,25 @@
-<p>lister tous les quiz disponible pour les stagiaires</p>
+<div style="margin-top: 5%"></div>
+
+<div class="container">
+  <div class="card col-3" *ngFor="let quiz of quizList">
+    <div class="card-body">
+
+      <h2 class="card-title text-center">{{quiz.name}}</h2>
+      <p class="card-text">{{quiz.description}}</p>
+
+    </div>
+    <ul class="list-group list-group-flush ">
+      <div class="text-center">
+        <li class="list-group-item ">10 questions ⏱</li>
+      </div>
+    </ul>
+    <div class="card-body2">
+      <div class="text-center">
+        <button class="btn text-">DEMARRER</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+</div>
+
