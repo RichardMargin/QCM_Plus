@@ -19,15 +19,16 @@ public class Question implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(nullable = false)
 	private String content;
+	@Column(nullable = false)
 	private Boolean isActive;
-
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	@JsonIgnore
 	private Quiz quiz;
-
 	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "question_id")
+	@JoinColumn(nullable = false, name = "question_id")
+	@Column(nullable = false)
 	private List<Answer> answers;
 
 }
