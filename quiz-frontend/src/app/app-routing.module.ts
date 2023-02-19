@@ -13,6 +13,7 @@ import { ResultComponent } from './components/result/result.component';
 import { AdminGuard } from './guards/admin.guard';
 import { AuthenticationGuard } from './guards/authentication.guard';
 
+
 const routes: Routes = [
   {
     path: '',

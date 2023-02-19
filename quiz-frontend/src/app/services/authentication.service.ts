@@ -13,7 +13,10 @@ export class AuthenticationService {
   user: AppUser = <AppUser>{};
   authenticatedUser: AppUser | undefined;
 
+
   constructor(private http: HttpClient) {}
+
+
 
   /* CONNECT CHEK WITH DB */
   login(username:string,password:string): Observable<AppUser>{
