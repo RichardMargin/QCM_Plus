@@ -21,7 +21,7 @@ export class QuizService {
 
   /* GET BY ID */
   getQuizById(id: number) {
-    return this.http.get<Quiz>(Constants.URL + 'quiz' + id);
+    return this.http.get<Quiz>(Constants.URL + 'quiz/' + id);
   }
 
   /* GET ALL */

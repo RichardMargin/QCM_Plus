@@ -44,6 +44,10 @@ export class AuthenticationService {
     return this.authenticatedUser?.role == Autority.ADMIN ? true:false;
   }
 
+  isIntern(): boolean{
+    return this.authenticatedUser?.role == Autority.USER ? true:false;
+  }
+
   logout(): Observable<boolean> {
     //localStorage.removeItem("authUser");
     this.authenticatedUser = undefined;

@@ -1,1 +1,61 @@
-<p>formulaire pour créer et update un quiz</p>
+<div class="container mt-5 col-md-6 offset-md-3 border border-secondary">
+    <form class="m-5" [formGroup]="quizForm" (ngSubmit)="saveQuiz()">
+        <!-- NAME -->
+        <div class="mb-3">
+            <label class="form-label">Nom</label>
+            <input type="text" class="form-control" formControlName="name" id="name" required />
+            <small class="text text-danger mb-2"
+                *ngIf="quizForm.controls['name'].errors && quizForm.controls['name'].touched">
+                {{utilsFunction.getMessageError('Name',quizForm.controls['name'].errors)}}
+            </small>
+        </div>
+
+
+        <!-- DESCRIPTION -->
+        <div class="mb-3">
+            <label class="form-label">Déscription</label>
+            <input type="text" class="form-control" formControlName="description" id="description" required />
+            <small class="text text-danger mb-3"
+                *ngIf="quizForm.controls['description'].errors && quizForm.controls['description'].touched">
+                {{utilsFunction.getMessageError('Description',quizForm.controls['description'].errors)}}
+            </small>
+        </div>
+
+
+        <!-- IS SHARED -->
+        <div class="mb-3">
+            <label class="form-label">Partager ce questionnaire avec les stagiaires ?</label>
+            <select class="form-select" aria-label="Default select example" formControlName="isShared" id="isShared"
+                required>
+                <option value="true">Partager</option>
+                <option value="false">Non partager</option>
+            </select>
+            <small class="text text-danger mb-2"
+                *ngIf="quizForm.controls['isShared'].errors && quizForm.controls['isShared'].touched">
+                {{utilsFunction.getMessageError('Partager',quizForm.controls['isShared'].errors)}}
+            </small>
+        </div>
+
+
+        <!-- STATUS -->
+        <div class="mb-3">
+            <label class="form-label">Status</label>
+            <select class="form-select" aria-label="Default select example" formControlName="isActive" id="isActive"
+                required>
+                <option value="true">Actif</option>
+                <option value="false">Inactif</option>
+            </select>
+            <small class="text text-danger mb-2"
+                *ngIf="quizForm.controls['isActive'].errors && quizForm.controls['isActive'].touched">
+                {{utilsFunction.getMessageError('Status',quizForm.controls['isActive'].errors)}}
+            </small>
+        </div>
+
+
+        <!-- BUTTON SUBMIT -->
+        <div class="mb-3">
+            <button [disabled]="!this.quizForm.valid" class="btn btn-success m-2" type="submit">Enregistrer</button>
+            <button (click)="prevPage()" class="btn btn-primary" type="submit">Retour</button>
+        </div>
+    </form>
+</div>

@@ -19,8 +19,10 @@ public class QuizController {
     private QuizService quizService;
 
     @GetMapping
-    public List<Quiz> findAll() {
-        return quizService.findAll();
+    public ResponseEntity<List<Quiz>> findAll() {
+    	
+    	List<Quiz> quizzes = quizService.findAll();
+        return ResponseEntity.ok().body(quizzes);
     }
 
     @GetMapping("/{id}")

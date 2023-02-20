@@ -16,9 +16,6 @@ import { QuizService } from '../../services/quiz.service';
 })
 export class QuizComponent implements OnInit {
   
-  question() {
-    throw new Error('Method not implemented.');
-  }
   quizList: Quiz[] = [];
   errormessage: string = '';
   totalPages: number = 0;
@@ -27,7 +24,7 @@ export class QuizComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService,
     private quizService: QuizService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -56,14 +53,19 @@ export class QuizComponent implements OnInit {
     } */
   }
 
-  update(arg0: string) {
-    throw new Error('mofidier un quiz form');
+  updateQuiz(quizId: number) {
+    this.router.navigate(['/home/quizForm/'], {
+      queryParams: { quizId: quizId},
+    });
   }
   gotToPage(_t46: number) {
     throw new Error('pagination');
   }
 
   newQuiz() {
-    this.router.navigateByUrl("/home/quizForm");
+    this.router.navigateByUrl('/home/quizForm');
+  }
+
+  question() {
   }
 }

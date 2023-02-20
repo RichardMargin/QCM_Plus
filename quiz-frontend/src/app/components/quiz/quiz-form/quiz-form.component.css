@@ -1,0 +1,6 @@
+::ng-deep  .snackBar-test{
+   
+    position: absolute !important;
+    
+    bottom: 150px !important;
+}
