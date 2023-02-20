@@ -1,4 +1,3 @@
-import { validateVerticalPosition } from '@angular/cdk/overlay';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -51,13 +50,12 @@ export class QuizFormComponent implements OnInit {
   saveQuiz() {
 
     this.quizService.createOrUpdateQuiz(this.quizForm.value).subscribe({
-      next: (data) => {
-        this.quizForm.patchValue(data);
-        this.snackbar.open('Quiz enrgistré ', 'Fermer', {
-          duration: 1500,
+      next: () => {
+        this.snackbar.open('Quiz enregistré ', 'Fermer', {
+          duration: 3000,
           panelClass: 'snackBar-test'
-         
         });
+        this.router.navigateByUrl("/home/quiz");
       },
       error: (err) => {
         this.errormessage = err;

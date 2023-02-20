@@ -4,6 +4,7 @@ export interface Quiz {
   description: string;
   isShared: boolean;
   isActive: boolean;
+  nbOfQuestions: number;
 }
 
 export interface PageQuiz {

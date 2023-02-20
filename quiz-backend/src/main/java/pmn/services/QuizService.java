@@ -10,5 +10,5 @@ public interface QuizService {
     List<Quiz> findAll();
     Optional<Quiz> findById(Long id);
     Quiz save(Quiz quiz);
-
+    List<Quiz> findAllForIntern();
 }

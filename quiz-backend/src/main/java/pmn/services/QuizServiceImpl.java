@@ -31,4 +31,9 @@ public class QuizServiceImpl implements QuizService {
         return quizRepository.save(quiz);
     }
 
+    @Override
+    public List<Quiz> findAllForIntern() {
+        return quizRepository.findAllByIsActiveTrueAndIsSharedTrue();
+    }
+
 }

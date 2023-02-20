@@ -30,11 +30,7 @@ export class QuizService {
   }
 
   /* GET ALL ACTIVE */
-  getAllActiveQuiz() {
-    return this.http.get<Quiz[]>(Constants.URL + 'quiz/active');
-  }
-  /* GET ALL INACTIVE */
-  getAllInactiveQuiz() {
-    return this.http.get<Quiz[]>(Constants.URL + 'quiz/inactive');
+  getAllQuizForIntern():Observable<Quiz[]> {
+    return this.http.get<Quiz[]>(Constants.URL + 'quiz/intern');
   }
 }

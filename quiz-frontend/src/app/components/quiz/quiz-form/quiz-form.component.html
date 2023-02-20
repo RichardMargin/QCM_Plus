@@ -6,7 +6,7 @@
             <input type="text" class="form-control" formControlName="name" id="name" required />
             <small class="text text-danger mb-2"
                 *ngIf="quizForm.controls['name'].errors && quizForm.controls['name'].touched">
-                {{utilsFunction.getMessageError('Name',quizForm.controls['name'].errors)}}
+                {{utilsFunction.getMessageError('Nom',quizForm.controls['name'].errors)}}
             </small>
         </div>
 
@@ -28,7 +28,7 @@
             <select class="form-select" aria-label="Default select example" formControlName="isShared" id="isShared"
                 required>
                 <option value="true">Partager</option>
-                <option value="false">Non partager</option>
+                <option value="false">Ne pas partager</option>
             </select>
             <small class="text text-danger mb-2"
                 *ngIf="quizForm.controls['isShared'].errors && quizForm.controls['isShared'].touched">
@@ -39,7 +39,7 @@
 
         <!-- STATUS -->
         <div class="mb-3">
-            <label class="form-label">Status</label>
+            <label class="form-label">Statut</label>
             <select class="form-select" aria-label="Default select example" formControlName="isActive" id="isActive"
                 required>
                 <option value="true">Actif</option>
@@ -47,7 +47,7 @@
             </select>
             <small class="text text-danger mb-2"
                 *ngIf="quizForm.controls['isActive'].errors && quizForm.controls['isActive'].touched">
-                {{utilsFunction.getMessageError('Status',quizForm.controls['isActive'].errors)}}
+                {{utilsFunction.getMessageError('Statut',quizForm.controls['isActive'].errors)}}
             </small>
         </div>
 

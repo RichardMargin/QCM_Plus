@@ -12,7 +12,7 @@
             <th>NOM</th>
             <th>DESCRIPTION</th>
             <th>PARTAGE</th>
-            <th>STATUS</th>
+            <th>STATUT</th>
             <th>MODIFIER</th>
             <th>QUESTIONS</th>
           </tr>
@@ -20,10 +20,10 @@
         <tbody>
           <tr *ngFor="let quiz of quizList">
             <td>{{quiz.name}}</td>
-            <td>{{quiz.description}}</td> 
+            <td>{{quiz.description}}</td>
             <td>
-              <span *ngIf="quiz.isShared==false">Visible par stagiaire</span>
-              <span *ngIf="quiz.isShared==true">Non visible par stagiaire</span>
+              <span *ngIf="quiz.isShared==false">Non visible par les stagiaires</span>
+              <span *ngIf="quiz.isShared==true">Visible par les stagiaires</span>
             </td>
             <td>
               <span *ngIf="quiz.isActive==false">Inactif</span>
