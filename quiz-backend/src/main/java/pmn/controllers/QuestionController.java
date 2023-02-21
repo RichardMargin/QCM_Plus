@@ -5,13 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pmn.dtos.QuestionRequestDto;
-import pmn.models.Answer;
 import pmn.models.Question;
-import pmn.models.Quiz;
 import pmn.services.QuestionService;
 import pmn.services.QuizService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
