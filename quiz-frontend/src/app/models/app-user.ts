@@ -1,8 +1,9 @@
 export interface AppUser {
-  id: string;
+  id: number;
   lastName: string;
   firstName: string;
   company: string;
   password: string;
   role: string;
+  isActive: boolean;
 }

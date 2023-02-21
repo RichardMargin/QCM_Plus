@@ -4,9 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pmn.dtos.QuestionRequestDto;
+import pmn.models.Answer;
 import pmn.models.Question;
+import pmn.models.Quiz;
 import pmn.services.QuestionService;
+import pmn.services.QuizService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,10 +23,8 @@ public class QuestionController {
     @Autowired
     private QuestionService questionService;
 
-    @GetMapping
-    public List<Question> findAll() {
-        return questionService.findAll();
-    }
+    @Autowired
+    private QuizService quizService;
 
     @GetMapping("/{id}")
     public ResponseEntity<Question> findById(@PathVariable Long id) {
@@ -33,21 +36,22 @@ public class QuestionController {
     }
 
     @PostMapping
-    public ResponseEntity<Question> create(@RequestBody Question question) {
+    public ResponseEntity<Question> create(@RequestBody QuestionRequestDto questionRequestDto) {
+        Question question = new Question(questionRequestDto.getContent(), questionRequestDto.getIsActive(), questionRequestDto.getAnswers());
+        question.setQuiz(quizService.findById(questionRequestDto.getQuizId()).get());
         return new ResponseEntity<>(questionService.save(question), HttpStatus.CREATED);
     }
 
     @PutMapping
-    public ResponseEntity<Question> update(@RequestBody Question question) {
+    public ResponseEntity<Question> update(@RequestBody QuestionRequestDto questionRequestDto) {
+        Question question = new Question(questionRequestDto.getId(), questionRequestDto.getContent(), questionRequestDto.getIsActive(), questionRequestDto.getAnswers());
+        question.setQuiz(quizService.findById(questionRequestDto.getQuizId()).get());
         return new ResponseEntity<>(questionService.save(question), HttpStatus.CREATED);
     }
 
-	/*
-	 * @GetMapping
-	 * 
-	 * @RequestMapping("/quiz/{id}") public List<Question>
-	 * findAllByQuizId(@PathVariable Long id) { return
-	 * questionService.findAllByQuizId(id); }
-	 */
+    @GetMapping("/quiz/{id}")
+    public ResponseEntity<List<Question>> findAllByQuizId(@PathVariable Long id) {
+        return ResponseEntity.ok().body(questionService.findAllByQuizId(id));
+    }
 
 }

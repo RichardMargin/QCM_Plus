@@ -19,8 +19,8 @@ public class UserAnswerController {
     private UserAnswerService userAnswerService;
 
     @GetMapping
-    public List<UserAnswer> findAll() {
-        return userAnswerService.findAll();
+    public ResponseEntity<List<UserAnswer>> findAll() {
+        return ResponseEntity.ok().body(userAnswerService.findAll());
     }
 
     @GetMapping("/{id}")
