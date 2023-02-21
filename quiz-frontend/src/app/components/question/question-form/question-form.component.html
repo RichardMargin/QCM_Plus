@@ -1,1 +1,72 @@
-<p>formulaire pour créer et update une question et ses réponses</p>
+<div class="container mt-5 col-md-6 offset-md-3 border border-secondary">
+  <form class="m-5" [formGroup]="questionForm" (ngSubmit)="saveQuestion()">
+    <div class="mb-3">
+      <label class="form-label">Question</label>
+      <input type="text" class="form-control" formControlName="content" id="content" required/>
+      <small class="text text-danger mb-2"
+             *ngIf="questionForm.controls['content'].errors && questionForm.controls['content'].touched">
+        {{utilsFunction.getMessageError('Question', questionForm.controls['content'].errors)}}
+      </small>
+    </div>
+
+
+    <div class="mb-3">
+      <label class="form-label">Statut</label>
+      <select class="form-select" aria-label="Default select example" formControlName="isActive" id="isActive"
+              required>
+        <option value="true">Actif</option>
+        <option value="false">Inactif</option>
+      </select>
+      <small class="text text-danger mb-2"
+             *ngIf="questionForm.controls['isActive'].errors && questionForm.controls['isActive'].touched">
+        {{utilsFunction.getMessageError('Statut', questionForm.controls['isActive'].errors)}}
+      </small>
+    </div>
+    <div *ngIf="newQuestion==false">
+      <div *ngFor="let answer of question.answers, let i = index">
+        <div class="mb-3">
+          <label class="form-label">Réponse {{ i + 1 }} </label>
+          <input type="text" class="form-control" formControlName="{{ 'answer' + (i+1)" }} id="{{ 'answer' + (i+1) }}"
+                 required/>
+          <small class="text text-danger mb-2"
+                 *ngIf="questionForm.controls['answer' + i].errors && questionForm.controls['answer' + i].touched">
+            {{displayErrorForAnswer(i)}}
+          </small>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="newQuestion==true">
+      <div *ngFor="let item of [1, 2, 3, 4, 5]">
+        <div class="mb-3">
+          <label class="form-label">Réponse {{ item }}</label>
+          <input *ngIf="item<3" type="text" class="form-control" formControlName="{{'answer' + item}}"
+                 id="{{'answer' + item}}" required/>
+          <input *ngIf="item>=3" type="text" class="form-control" formControlName="{{'answer' + item}}"
+                 id="{{'answer' + item}}"/>
+          <small class="text text-danger mb-2"
+                 *ngIf="questionForm.controls['answer' + item].errors && questionForm.controls['answer' + item].touched">
+            {{displayErrorForAnswer(item)}}
+          </small>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="newQuestion==false">
+      <div *ngFor="let item of question.answers; let i = index;">
+        <div class="mb-3">
+          <label class="form-label">Réponse {{ i + 1 }}</label>
+          <input type="text" class="form-control" formControlName="{{'answer' + (i + 1) }}"
+                 id="{{'answer' + (i + 1)}}" required />
+          <small class="text text-danger mb-2"
+                 *ngIf="questionForm.controls['answer' + (i + 1)].errors && questionForm.controls['answer' + (i + 1)].touched">
+            {{displayErrorForAnswer(i + 1)}}
+          </small>
+        </div>
+      </div>
+    </div>
+    <!-- BUTTON SUBMIT -->
+    <div class="mb-3">
+      <button [disabled]="!this.questionForm.valid" class="btn btn-success m-2" type="submit">Enregistrer</button>
+      <button (click)="prevPage()" class="btn btn-primary" type="submit">Retour</button>
+    </div>
+  </form>
+</div>

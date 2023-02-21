@@ -12,7 +12,7 @@
             <th>NOM</th>
             <th>DESCRIPTION</th>
             <th>PARTAGE</th>
-            <th>STATUS</th>
+            <th>STATUT</th>
             <th>MODIFIER</th>
             <th>QUESTIONS</th>
           </tr>
@@ -20,20 +20,17 @@
         <tbody>
           <tr *ngFor="let quiz of quizList">
             <td>{{quiz.name}}</td>
-            <td>{{quiz.description}}</td> 
+            <td>{{quiz.description}}</td>
             <td>
-              <!-- <i *ngIf="quiz.isShared" class="bi bi-heart-fill text-success"></i>
-              <i *ngIf="!quiz.isShared" class="bi bi-heart-fill text-primary"></i> -->
-              <span *ngIf="quiz.isShared==false">Visible par stagiaire</span>
-              <span *ngIf="quiz.isShared==true">Non visible par stagiaire</span>
+              <span *ngIf="quiz.isShared==false">Non visible par les stagiaires</span>
+              <span *ngIf="quiz.isShared==true">Visible par les stagiaires</span>
             </td>
             <td>
               <span *ngIf="quiz.isActive==false">Inactif</span>
               <span *ngIf="quiz.isActive==true">Actif</span>
             </td>
-            <td><button class="btn btn-success"><i class="bi bi-pencil-fill"></i></button></td>
-           
-            <td><button (click)="question()" class="btn btn-success"><i class="bi bi-plus-circle-fill"></i></button></td>
+            <td><button (click)="updateQuiz(quiz.id)" class="btn btn-success"><i class="bi bi-pencil-fill"></i></button></td>
+           <td><button (click)="showQuizquestions(quiz.id)" class="btn btn-success"><i class="bi bi-plus-circle-fill"></i></button></td>
           </tr>
         </tbody>
       </table>
@@ -45,5 +42,4 @@
       </ul>
     </div>
   </div>
-
 </div>

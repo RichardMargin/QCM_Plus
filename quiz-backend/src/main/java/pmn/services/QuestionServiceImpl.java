@@ -3,6 +3,7 @@ package pmn.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pmn.models.Question;
+import pmn.models.Quiz;
 import pmn.repositories.QuestionRepository;
 
 import java.util.List;
@@ -32,5 +33,10 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public List<Question> findAllByQuizId(Long id) {
         return questionRepository.findAllByQuizId(id);
+    }
+
+    @Override
+    public Integer countAllByQuiz(Quiz quiz) {
+        return questionRepository.countAllByQuiz(quiz);
     }
 }

@@ -33,6 +33,7 @@ import { ResultComponent } from './components/result/result.component';
 import { ExamComponent } from './components/exam/exam.component';
 import { QuestionFormComponent } from './components/question/question-form/question-form.component';
 import { AppUserFormComponent } from './components/app-user/app-user-form/app-user-form.component';
+import { UtilsFunction } from './utils/utilsFunction';
 
 
 
@@ -78,7 +79,8 @@ import { AppUserFormComponent } from './components/app-user/app-user-form/app-us
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

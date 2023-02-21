@@ -30,8 +30,24 @@ public class AppUser implements Serializable {
 	private String password;
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
-	private Role role;
+	private Role role = Role.INTERN;
 	@Column(nullable = false)
 	private Boolean isActive;
+
+	public AppUser(String lastName, String firstName, String company, String password, Boolean isActive) {
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.company = company;
+		this.password = password;
+		this.isActive = isActive;
+	}
+
+	public AppUser(Long id, String lastName, String firstName, String company, Boolean isActive) {
+		this.id = id;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.company = company;
+		this.isActive = isActive;
+	}
 
 }

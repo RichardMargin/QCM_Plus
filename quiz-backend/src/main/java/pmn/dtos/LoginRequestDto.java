@@ -1,6 +1,6 @@
 package pmn.dtos;
 
-public class LoginDto {
+public class LoginRequestDto {
     private String lastName;
     private String password;
 

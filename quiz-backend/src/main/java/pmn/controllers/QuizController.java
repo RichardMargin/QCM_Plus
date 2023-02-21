@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pmn.models.Quiz;
+import pmn.services.QuestionService;
 import pmn.services.QuizService;
 
 import java.util.List;
@@ -18,9 +19,21 @@ public class QuizController {
     @Autowired
     private QuizService quizService;
 
+    @Autowired
+    private QuestionService questionService;
+
     @GetMapping
-    public List<Quiz> findAll() {
-        return quizService.findAll();
+    public ResponseEntity<List<Quiz>> findAll() {
+        return ResponseEntity.ok().body(quizService.findAll());
+    }
+
+    @GetMapping("/intern")
+    public ResponseEntity<List<Quiz>> findAllForIntern() {
+        List<Quiz> quizzes = quizService.findAllForIntern();
+        for (Quiz quiz:quizzes) {
+            quiz.setNbOfQuestions(questionService.countAllByQuiz(quiz));
+        }
+        return ResponseEntity.ok().body(quizzes);
     }
 
     @GetMapping("/{id}")

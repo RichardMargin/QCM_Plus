@@ -19,11 +19,11 @@ export class AppUserService {
 
   /* GET BY ID */
   getAppUserById(id: number) {
-    return this.http.get<AppUser>(Constants.URL + 'appUser' + id);
+    return this.http.get<AppUser>(Constants.URL + 'appUser/' + id);
   }
 
   /* GET ALL */
-  getAllAppUser() {
+  getAllInterns() {
     return this.http.get<AppUser[]>(Constants.URL + 'appUser');
   }
 }

@@ -17,7 +17,6 @@ export class AdminGuard implements CanActivate {
     
       /* check if current user is an admin or not */  
     let isCurrentUserAdmin = this.authenticationService.isAdmin();
-    console.log("isCurrentUserAdmin " + isCurrentUserAdmin);
       
     /* user not admin will be redirected to login page 
       else user can access route 

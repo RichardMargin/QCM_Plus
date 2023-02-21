@@ -1,9 +1,10 @@
 export interface Quiz {
-  id: string;
+  id: number;
   name: string;
   description: string;
   isShared: boolean;
   isActive: boolean;
+  nbOfQuestions: number;
 }
 
 export interface PageQuiz {

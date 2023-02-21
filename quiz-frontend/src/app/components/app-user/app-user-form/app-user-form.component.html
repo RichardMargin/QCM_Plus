@@ -1,1 +1,66 @@
-<p>formulaire pour créer et update un stagiaire</p>
+<div class="container mt-5 col-md-6 offset-md-3 border border-secondary">
+  <form class="m-5" [formGroup]="internForm" (ngSubmit)="saveUser()">
+    <div class="mb-3">
+      <label class="form-label">Nom</label>
+      <input type="text" class="form-control" formControlName="lastName" id="lastName" required />
+      <small class="text text-danger mb-2"
+             *ngIf="internForm.controls['lastName'].errors && internForm.controls['lastName'].touched">
+        {{utilsFunction.getMessageError('Nom',internForm.controls['lastName'].errors)}}
+      </small>
+    </div>
+
+
+    <div class="mb-3">
+      <label class="form-label">Prénom</label>
+      <input type="text" class="form-control" formControlName="firstName" id="firstName" required />
+      <small class="text text-danger mb-3"
+             *ngIf="internForm.controls['firstName'].errors && internForm.controls['firstName'].touched">
+        {{utilsFunction.getMessageError('Prénom',internForm.controls['firstName'].errors)}}
+      </small>
+    </div>
+
+
+    <div class="mb-3">
+      <label class="form-label">Entreprise</label>
+      <input type="text" class="form-control" formControlName="company" id="company" required />
+      <small class="text text-danger mb-3"
+             *ngIf="internForm.controls['company'].errors && internForm.controls['company'].touched">
+        {{utilsFunction.getMessageError('Entreprise',internForm.controls['company'].errors)}}
+      </small>
+    </div>
+
+    <div *ngIf="showPasswordField==true" class="mb-3">
+      <label class="form-label">Mot de passe</label>
+      <input type="text" class="form-control" formControlName="password" id="password" required />
+      <small class="text text-danger mb-3"
+             *ngIf="internForm.controls['password'].errors && internForm.controls['password'].touched && showPasswordField==true">
+        {{utilsFunction.getMessageError('Mot de passe ',internForm.controls['password'].errors)}}
+      </small>
+    </div>
+
+
+    <!-- STATUS -->
+    <div class="mb-3">
+      <label class="form-label">Statut</label>
+      <select class="form-select" aria-label="Default select example" formControlName="isActive" id="isActive"
+              required>
+        <option value="true">Actif</option>
+        <option value="false">Inactif</option>
+      </select>
+      <small class="text text-danger mb-2"
+             *ngIf="internForm.controls['isActive'].errors && internForm.controls['isActive'].touched">
+        {{utilsFunction.getMessageError('Statut',internForm.controls['isActive'].errors)}}
+      </small>
+    </div>
+
+
+    <!-- BUTTON SUBMIT -->
+    <div class="mb-3">
+      <button [disabled]="!this.internForm.valid && showPasswordField==true" class="btn btn-success m-2" type="submit">Enregistrer</button>
+      <button (click)="prevPage()" class="btn btn-primary" type="submit">Retour</button>
+    </div>
+  </form>
+  <div *ngIf="newUser==false" class="mb-3">
+    <button #passwordButton (click)="showPassword(passwordButton)" type="button" class="btn btn-warning">Modifer le mot de passe</button>
+  </div>
+</div>

@@ -28,7 +28,7 @@ export class ExamComponent {
   }
 
   ngOnInit(): void {
-    this.quizService.getAllQuiz().subscribe({
+    this.quizService.getAllQuizForIntern().subscribe({
       next: (data) => {
         this.quizList = data;
       },

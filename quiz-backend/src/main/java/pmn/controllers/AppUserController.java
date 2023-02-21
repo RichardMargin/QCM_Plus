@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pmn.dtos.AppUserRequestDto;
 import pmn.models.AppUser;
+import pmn.models.Role;
+import pmn.security.Encrypt;
 import pmn.services.AppUserService;
 
 import java.util.List;
@@ -18,9 +21,11 @@ public class AppUserController {
     @Autowired
     private AppUserService appUserService;
 
+    private Encrypt encrypt = new Encrypt();
+
     @GetMapping
-    public List<AppUser> findAll() {
-        return appUserService.findAll();
+    public ResponseEntity<List<AppUser>> findAllInterns() {
+        return ResponseEntity.ok().body(appUserService.findAllByRole(Role.INTERN));
     }
 
     @GetMapping("/{id}")
@@ -33,12 +38,21 @@ public class AppUserController {
     }
 
     @PostMapping
-    public ResponseEntity<AppUser> create(@RequestBody AppUser appUser) {
+    public ResponseEntity<AppUser> create(@RequestBody AppUserRequestDto appUserRequestDto) {
+        AppUser appUser = new AppUser(appUserRequestDto.getLastName(), appUserRequestDto.getFirstName(),
+                appUserRequestDto.getCompany(), encrypt.cryptString(appUserRequestDto.getPassword()), appUserRequestDto.getIsActive());
         return new ResponseEntity<>(appUserService.save(appUser), HttpStatus.CREATED);
     }
 
     @PutMapping
-    public ResponseEntity<AppUser> update(@RequestBody AppUser appUser) {
+    public ResponseEntity<AppUser> update(@RequestBody AppUserRequestDto appUserRequestDto) {
+        AppUser appUser = new AppUser(appUserRequestDto.getId(), appUserRequestDto.getLastName(), appUserRequestDto.getFirstName(),
+                appUserRequestDto.getCompany(), appUserRequestDto.getIsActive());
+        if (appUserRequestDto.getPassword() == null) {
+            appUser.setPassword(appUserService.findById(appUser.getId()).get().getPassword());
+        } else {
+            appUser.setPassword(encrypt.cryptString(appUserRequestDto.getPassword()));
+        }
         return new ResponseEntity<>(appUserService.save(appUser), HttpStatus.CREATED);
     }
 

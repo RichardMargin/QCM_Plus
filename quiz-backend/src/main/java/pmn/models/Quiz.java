@@ -25,5 +25,8 @@ public class Quiz implements Serializable {
 	private Boolean isShared;
 	@Column(nullable = false)
 	private Boolean isActive;
+	@Transient
+	private Integer nbOfQuestions;
+
 
 }
