@@ -1,1 +1,40 @@
-<p>lister tous les stagiaires, plus boutons pour ajouter et modifier</p>
+<div class="container mt-5">
+  <ng-template #errors>
+    <div class="text-danger">{{errormessage}}</div>
+  </ng-template>
+  <button (click)="newUser()" class="btn btn-primary m-3">CRÉER UN STAGIAIRE <i class="bi bi-pencil-fill"></i></button>
+  <div class="card" *ngIf="userList; else errors">
+    <div class="card-header m-3">LISTE DES STAGIAIRES </div>
+    <div class="card-body">
+      <table class="table table-hover ">
+        <thead>
+          <tr>
+            <th>NOM</th>
+            <th>PRÉNOM</th>
+            <th>ENTREPRISE</th>
+            <th>STATUT</th>
+            <th>MODIFIER</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of userList">
+          <td>{{user.lastName}}</td>
+          <td>{{user.firstName}}</td>
+          <td>{{user.company}}</td>
+          <td>
+            <span *ngIf="user.isActive==false">Inactif</span>
+            <span *ngIf="user.isActive==true">Actif</span>
+          </td>
+          <td><button (click)="updateUser(user.id)" class="btn btn-success"><i class="bi bi-pencil-fill"></i></button></td>
+        </tr>
+        </tbody>
+      </table>
+      <ul class="nav nav-pills">
+        <li *ngFor="let item of [].constructor(this.totalPages); let i=index">
+          <a (click)="gotToPage(i)" [ngClass]="i==currentPage ? 'btn-primary' : 'btn-outline-primary'"
+             class="btn ms-1 mt-1">{{i}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

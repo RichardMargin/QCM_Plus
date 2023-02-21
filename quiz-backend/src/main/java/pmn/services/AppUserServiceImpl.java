@@ -3,6 +3,7 @@ package pmn.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pmn.models.AppUser;
+import pmn.models.Role;
 import pmn.repositories.AppUserRepository;
 
 import java.util.List;
@@ -17,6 +18,11 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public List<AppUser> findAll() {
         return appUserRepository.findAll();
+    }
+
+    @Override
+    public List<AppUser> findAllByRole(Role role) {
+        return appUserRepository.findAllByRole(role);
     }
 
     @Override

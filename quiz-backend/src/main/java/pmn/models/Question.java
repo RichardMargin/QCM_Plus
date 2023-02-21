@@ -26,9 +26,21 @@ public class Question implements Serializable {
 	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	@JsonIgnore
 	private Quiz quiz;
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(nullable = false, name = "question_id")
 	@Column(nullable = false)
 	private List<Answer> answers;
 
+	public Question(String content, Boolean active, List<Answer> answers) {
+		this.content = content;
+		this.isActive = active;
+		this.answers = answers;
+	}
+
+	public Question(Long id, String content, Boolean isActive, List<Answer> answers) {
+		this.id = id;
+		this.content = content;
+		this.isActive = isActive;
+		this.answers = answers;
+	}
 }

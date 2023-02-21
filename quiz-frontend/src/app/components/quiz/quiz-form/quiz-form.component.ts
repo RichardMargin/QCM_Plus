@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Quiz } from 'src/app/models/quiz';
@@ -41,17 +41,12 @@ export class QuizFormComponent implements OnInit {
       isActive: this.fb.control(null, [Validators.required]),
     });
 
-    if (this.quizId) {
-      this.getQuiz(this.quizId);
-    }
-
   }
 
   saveQuiz() {
-
     this.quizService.createOrUpdateQuiz(this.quizForm.value).subscribe({
       next: () => {
-        this.snackbar.open('Quiz enregistré ', 'Fermer', {
+        this.snackbar.open('Quiz enregistré', 'Fermer', {
           duration: 3000,
           panelClass: 'snackBar-test'
         });

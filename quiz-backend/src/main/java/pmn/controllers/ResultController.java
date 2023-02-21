@@ -19,8 +19,8 @@ public class ResultController {
     private ResultService resultService;
 
     @GetMapping
-    public List<Result> findAll() {
-        return resultService.findAll();
+    public ResponseEntity<List<Result>> findAll() {
+        return ResponseEntity.ok().body(resultService.findAll());
     }
 
     @GetMapping("/{id}")

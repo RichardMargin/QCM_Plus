@@ -30,7 +30,7 @@
               <span *ngIf="quiz.isActive==true">Actif</span>
             </td>
             <td><button (click)="updateQuiz(quiz.id)" class="btn btn-success"><i class="bi bi-pencil-fill"></i></button></td>
-           <td><button (click)="question()" class="btn btn-success"><i class="bi bi-plus-circle-fill"></i></button></td>
+           <td><button (click)="showQuizquestions(quiz.id)" class="btn btn-success"><i class="bi bi-plus-circle-fill"></i></button></td>
           </tr>
         </tbody>
       </table>
@@ -42,5 +42,4 @@
       </ul>
     </div>
   </div>
-
 </div>

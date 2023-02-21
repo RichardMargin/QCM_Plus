@@ -10,22 +10,18 @@
           <thead>
             <tr>
               <th>QUESTION</th>
-              <th>STATUS</th>
+              <th>STATUT</th>
               <th>MODIFIER</th>
-              <th>SUPPRIMER</th>
-              <th>REPONSES</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let question of questionList">
               <td>{{question.content}}</td>
               <td>
-                <span *ngIf="question.isActive==false">Inactif</span>
+                  <span *ngIf="question.isActive==false">Inactif</span>
                 <span *ngIf="question.isActive==true">Actif</span>
               </td>
               <td><button (click)="updateQuestion(question.id)" class="btn btn-success"><i class="bi bi-pencil-fill"></i></button></td>
-              <td><button (click)="deleteQuestion(question.id)" class="btn btn-success"><i class="bi bi-trash3-fill"></i></button></td>
-              <td><button (click)="seeAnswer()" class="btn btn-success"><i class="bi bi-plus-circle-fill"></i></button></td>
             </tr>
           </tbody>
         </table>
@@ -37,6 +33,6 @@
         </ul>
       </div>
     </div>
-  
+
   </div>
 
