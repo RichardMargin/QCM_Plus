@@ -29,4 +29,9 @@ export class QuestionService {
     return this.http.get<Question[]>(Constants.URL + 'question/quiz/' + id);
   }
 
+
+  getAllQuestionByQuizId(quizId: number) {
+    return this.http.get<Question[]>(Constants.URL + 'question/quiz/' + quizId);
+  }
+
 }

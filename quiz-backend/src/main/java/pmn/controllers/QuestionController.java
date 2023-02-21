@@ -46,9 +46,11 @@ public class QuestionController {
         return new ResponseEntity<>(questionService.save(question), HttpStatus.CREATED);
     }
 
+
     @GetMapping("/quiz/{id}")
     public ResponseEntity<List<Question>> findAllByQuizId(@PathVariable Long id) {
         return ResponseEntity.ok().body(questionService.findAllByQuizId(id));
     }
+
 
 }
