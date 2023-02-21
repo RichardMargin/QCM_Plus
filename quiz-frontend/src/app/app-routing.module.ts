@@ -12,6 +12,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { ResultComponent } from './components/result/result.component';
 import { AdminGuard } from './guards/admin.guard';
 import { AuthenticationGuard } from './guards/authentication.guard';
+import {ExamQuestionsComponent} from "./components/exam/exam-questions/exam-questions.component";
 
 
 const routes: Routes = [
@@ -42,6 +43,7 @@ const routes: Routes = [
         component: QuestionComponent,
         canActivate: [AdminGuard],
       },
+
       {
         path: 'questionForm',
         component: QuestionFormComponent,
@@ -59,6 +61,7 @@ const routes: Routes = [
       },
       { path: 'result', component: ResultComponent },
       { path: 'exam', component: ExamComponent },
+      { path: 'exam-questions', component: ExamQuestionsComponent },
     ],
   },
 ];

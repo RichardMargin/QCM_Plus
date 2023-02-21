@@ -27,5 +27,13 @@ export class QuestionService {
   getAllQuestion() {
     return this.http.get<Question[]>(Constants.URL + 'question');
   }
- 
+
+  getAllQuestionByQuizId(quizId: number) {
+    return this.http.get<Question[]>(Constants.URL + 'question/quiz/' + quizId);
+  }
+
+
+
+
+
 }

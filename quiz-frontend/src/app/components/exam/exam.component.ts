@@ -36,5 +36,12 @@ export class ExamComponent {
         this.errormessage = err;
       },
     });
+
+
+  }
+  startQuiz(quizId: number) {
+    this.router.navigate(['/home/exam-questions/'], {
+      queryParams: { quizId: quizId},
+    });
   }
 }
