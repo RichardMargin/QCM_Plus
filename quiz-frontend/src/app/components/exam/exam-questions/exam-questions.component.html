@@ -1,10 +1,22 @@
 <div style="margin-top: 5%"></div>
 
 <div class="container">
-  <div class="card col-8" *ngFor="let question of questionList">
+  <div class=" col-8" *ngFor="let question of questionList">
     <div class="card-body">
       <h2 class="card-title text-center">{{question.content}}</h2>
 
+
     </div>
+
+    <div class="card2" *ngFor="let question of question.answers">
+      <br>
+      <div class="card-body2">
+        <p>{{question.content}}</p>
+      </div>
+    </div>
+<div class="text-center">
+  <button class="btn">Valider</button>
+
+</div>
   </div>
 </div>

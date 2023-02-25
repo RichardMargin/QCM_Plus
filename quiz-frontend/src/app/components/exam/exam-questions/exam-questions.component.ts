@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {QuestionService} from "../../../services/question.service";
 import {Quiz} from "../../../models/quiz";
 import {Answer} from "../../../models/answer";
+import {AnswerService} from "../../../services/answer.service";
 
 @Component({
   selector: 'app-exam-questions',
@@ -23,10 +24,12 @@ export class ExamQuestionsComponent {
   totalPages: number = 0;
   currentPage: number = 0;
   quizId: number = 0;
+  answerId: number = 0;
 
 constructor(
   private authenticationService: AuthenticationService,
   private questionService:QuestionService,
+  private answerService:AnswerService,
   private router: Router,
 
   private route: ActivatedRoute,
@@ -49,6 +52,15 @@ constructor(
         },
       });
     }
+
+    this.answerService.getAllAnswerByQuestionId(this.quizId).subscribe({
+      next: (data) => {
+        this.answerList = data;
+      },
+      error: (err) => {
+        this.errormessage = err;
+      },
+    });
 
 }
 

@@ -27,4 +27,9 @@ export class AnswerService {
   getAllAnswer() {
     return this.http.get<Answer[]>(Constants.URL + 'answer');
   }
+
+  /* GET ALL BY QUESTION ID */
+  getAllAnswerByQuestionId(id: number) {
+    return this.http.get<Answer[]>(Constants.URL + 'answer' + id);
+  }
 }
