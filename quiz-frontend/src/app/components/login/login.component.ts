@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppUserService } from 'src/app/services/app-user.service';
@@ -10,7 +10,8 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
-
+  @ViewChild('passwordInput')
+  passwordInput!: ElementRef;
 
   loginForm!: FormGroup;
   errormessage:string="";
@@ -46,9 +47,8 @@ export class LoginComponent implements OnInit{
 
     }
 
-    btnShowHidePassword(){
-      if(this.showPassword){
-        //document.getElementById("password"); 
-      }
+    btnShowHidePassword() {
+      this.showPassword = !this.showPassword;
+      this.passwordInput.nativeElement.type = this.showPassword ? 'text' : 'password';
     }
 }

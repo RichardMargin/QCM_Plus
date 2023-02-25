@@ -12,13 +12,13 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Mot de passe</label>
-                        <input class="form-control" type="password" formControlName="password" id="password"
+                        <input class="form-control" #passwordInput type="password" formControlName="password" id="password"
                             placeholder="Entrer un mot de passe" required>
-                            <button (click)="btnShowHidePassword()" class="btn btn-outline-primary m-1" id="btnShowHidePassword">
-                                <i class="bi bi-eye-slash-fill" *ngIf="!showPassword"></i>
-                                <i class="bi bi-eye-fill" *ngIf="showPassword"></i>
-                            </button>
-                    </div>
+                        <button (click)="btnShowHidePassword()" class="btn btn-outline-primary m-1" id="btnShowHidePassword">
+                            <i class="bi bi-eye-slash-fill" *ngIf="!showPassword"></i>
+                            <i class="bi bi-eye-fill" *ngIf="showPassword"></i>
+                        </button>
+                    </div>                    
                     <button type="submit" class="btn btn-primary m-1">Valider</button>
                     <button type="reset" class="btn btn-primary">Annuler</button>
                 </form>
