@@ -21,6 +21,6 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public Optional<AppUser> login(String name, String password) {
-        return appUserRepository.findByLastNameAndPassword(name, encrypt.cryptString(password));
+        return appUserRepository.findByLastNameAndPasswordAndIsActiveTrue(name, encrypt.cryptString(password));
     }
 }
