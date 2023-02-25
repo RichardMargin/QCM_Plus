@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit{
         const dialogRef = this.dialog.open(DialogComponent, {
           data: {
             title: 'Error',
-            message: "le mot de passe ou le nom d'utilisateur est incorrect ou l'utilisateur n'est pas "
+            message: "le mot de passe ou le nom d'utilisateur est incorrect ou l'utilisateur n'est pas actif"
           }
         });
       },
