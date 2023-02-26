@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit{
         this.authenticationService.authenticateUser(responseAppUser).subscribe({
           next: (data) => {
             localStorage.setItem('userType', responseAppUser.role);
-            this.router.navigateByUrl("/home");
+            this.router.navigateByUrl("/home/welcome");
           }
         });
       },
