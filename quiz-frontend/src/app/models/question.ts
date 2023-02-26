@@ -8,3 +8,13 @@ export interface Question {
   quizId: number;
 
 }
+
+export class QuestionImpl implements Question {
+  constructor(
+    public id: number,
+    public content: string,
+    public isActive: boolean,
+    public answers: Answer[],
+    public quizId: number
+  ) {}
+}
