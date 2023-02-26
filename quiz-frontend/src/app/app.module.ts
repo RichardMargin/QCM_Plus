@@ -37,6 +37,7 @@ import { UtilsFunction } from './utils/utilsFunction';
 import { ExamQuestionsComponent } from './components/exam/exam-questions/exam-questions.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 
 
@@ -58,6 +59,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     AppUserFormComponent,
     ExamQuestionsComponent,
     DialogComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
