@@ -49,12 +49,21 @@ export class LoginComponent implements OnInit{
         });
       },
       error: (err) => {
-        const dialogRef = this.dialog.open(DialogComponent, {
-          data: {
-            title: 'Error',
-            message: "le mot de passe ou le nom d'utilisateur est incorrect ou l'utilisateur n'est pas actif"
-          }
-        });
+        if (err.status === 401) {
+          const dialogRef = this.dialog.open(DialogComponent, {
+            data: {
+              title: 'Error',
+              message: "Le compte utilisateur n'est pas actif "
+            }
+          });
+        } else if (err.status === 500) {
+          const dialogRef = this.dialog.open(DialogComponent, {
+            data: {
+              title: 'Error',
+              message: "Le mot de passe ou le nom d'utilisateur est incorrect"
+            }
+          });
+        }
       },
     });
   }

@@ -15,10 +15,10 @@
                         <div class="d-flex align-items-center">
                             <input class="form-control" #passwordInput type="password" formControlName="password" id="password"
                                 placeholder="Entrer un mot de passe" required>
-                            <button (click)="btnShowHidePassword()" class="btn btn-outline-primary ms-2" id="btnShowHidePassword">
+                            <button type="button" (click)="btnShowHidePassword()" class="btn btn-outline-primary ms-2" id="btnShowHidePassword">
                                 <i class="bi bi-eye-slash-fill" *ngIf="!showPassword"></i>
                                 <i class="bi bi-eye-fill" *ngIf="showPassword"></i>
-                            </button>
+                            </button>           
                         </div>
                     </div>              
                     <button type="submit" class="btn btn-primary m-1">Valider</button>

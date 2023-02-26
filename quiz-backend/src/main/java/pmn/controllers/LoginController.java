@@ -22,8 +22,12 @@ public class LoginController {
     public ResponseEntity<AppUser> login(@RequestBody LoginRequestDto loginRequestDto) {
         Optional<AppUser> opt = loginService.login(loginRequestDto.getLastName(), loginRequestDto.getPassword());
         if (opt.isPresent()) {
-            return new ResponseEntity<>(opt.get(), HttpStatus.OK);
+            if(opt.get().getIsActive()){
+                return new ResponseEntity<>(opt.get(), HttpStatus.OK);
+            }else{
+                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            }
         }
-        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
