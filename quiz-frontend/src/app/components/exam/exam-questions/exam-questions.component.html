@@ -1,10 +1,29 @@
 <div style="margin-top: 5%"></div>
 
 <div class="container">
-  <div class="card col-8" *ngFor="let question of questionList">
+  <div class="col-8">
     <div class="card-body">
-      <h2 class="card-title text-center">{{question.content}}</h2>
+      <h2 class="card-title text-center">{{questionList[currentQuestion].content}}</h2>
+    </div>
 
+    <div class="card2" *ngFor="let answer of questionList[currentQuestion].answers">
+      <br>
+      <div class="card-body2" [class.selected]="selectedAnswerId === answer.id" (click)="selectAnswer(answer.id)">
+        <p>{{answer.content}}</p>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button class="btn" (click)="validateAnswer()">Valider</button>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title text-center">Time Remaining:</h4>
+        <div class="timer text-center">{{timeLeft}} seconds</div>
+      </div>
     </div>
   </div>
 </div>

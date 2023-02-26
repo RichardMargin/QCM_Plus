@@ -115,6 +115,6 @@ export class QuestionFormComponent implements OnInit {
   }
 
   prevPage() {
-    this.router.navigateByUrl("/home/question");
+    this.router.navigateByUrl('/home/question-form');
   }
 }

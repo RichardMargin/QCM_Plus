@@ -13,6 +13,7 @@ import { ResultComponent } from './components/result/result.component';
 import { AdminGuard } from './guards/admin.guard';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import {ExamQuestionsComponent} from "./components/exam/exam-questions/exam-questions.component";
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,9 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [AuthenticationGuard],
     children: [
+      { path: 'welcome',
+       component: WelcomeComponent 
+      },
       {
         path: 'quiz',
         component: QuizComponent,

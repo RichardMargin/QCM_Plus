@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AppUserService } from 'src/app/services/app-user.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,11 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
+  @ViewChild('passwordInput')
+  passwordInput!: ElementRef;
 
+  @ViewChild('usernameInput')
+  usernameInput!: ElementRef;
 
   loginForm!: FormGroup;
   errormessage:string="";
@@ -19,7 +25,8 @@ export class LoginComponent implements OnInit{
   constructor(
     private fb : FormBuilder,
     private authenticationService : AuthenticationService,
-    private router: Router) { }
+    private router: Router,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -27,28 +34,56 @@ export class LoginComponent implements OnInit{
       password: new FormControl('', [Validators.required, Validators.minLength(7)]),
     });
   }
-    connect() {
-      let username = this.loginForm.value.username;
-      let password = this.loginForm.value.password;
 
-      this.authenticationService.login(username, password).subscribe({
-        next: (responseAppUser) => {
-          this.authenticationService.authenticateUser(responseAppUser).subscribe({
-            next: (data) => {
-              this.router.navigateByUrl("/home");
+  connect() {
+    let username = this.loginForm.value.username;
+    let password = this.loginForm.value.password;
+  
+    this.authenticationService.login(username, password).subscribe({
+      next: (responseAppUser) => {
+        this.authenticationService.authenticateUser(responseAppUser).subscribe({
+          next: (data) => {
+            localStorage.setItem('userType', responseAppUser.role);
+            this.router.navigateByUrl("/home/welcome");
+          }
+        });
+      },
+      error: (err) => {
+        if (err.status === 401) {
+          const dialogRef = this.dialog.open(DialogComponent, {
+            data: {
+              title: 'Error',
+              message: "Le compte utilisateur n'est pas actif "
             }
           });
-        },
-        error: (err) => {
-          this.errormessage = err;
-        },
+        } else if (err.status === 500) {
+          const dialogRef = this.dialog.open(DialogComponent, {
+            data: {
+              title: 'Error',
+              message: "Le mot de passe ou le nom d'utilisateur est incorrect"
+            }
+          });
+        }
+      },
+    });
+  }
+
+    openDialog(message: string): void {
+      const dialogRef = this.dialog.open(DialogComponent, {
+        width: '250px',
+        data: { message: message }
       });
-
+    
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
     }
 
-    btnShowHidePassword(){
-      if(this.showPassword){
-        //document.getElementById("password"); 
-      }
-    }
+    btnShowHidePassword() {
+      const password = this.passwordInput.nativeElement.value;
+        this.showPassword = !this.showPassword;
+        this.passwordInput.nativeElement.type = this.showPassword ? 'text' : 'password';     
+    }   
+
+    
 }

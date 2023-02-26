@@ -35,6 +35,9 @@ import { QuestionFormComponent } from './components/question/question-form/quest
 import { AppUserFormComponent } from './components/app-user/app-user-form/app-user-form.component';
 import { UtilsFunction } from './utils/utilsFunction';
 import { ExamQuestionsComponent } from './components/exam/exam-questions/exam-questions.component';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 
 
@@ -55,6 +58,8 @@ import { ExamQuestionsComponent } from './components/exam/exam-questions/exam-qu
     QuestionFormComponent,
     AppUserFormComponent,
     ExamQuestionsComponent,
+    DialogComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +85,7 @@ import { ExamQuestionsComponent } from './components/exam/exam-questions/exam-qu
     MatSidenavModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatDialogModule
   ],
   providers: [
   ],

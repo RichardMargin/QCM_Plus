@@ -1,0 +1,25 @@
+<div class="card-body">
+    <div *ngIf="userType === 'ADMINISTRATOR'">
+      <p class="text-center">Welcome, Admin! Here's what you can do:</p>
+      <div class="text-center">
+        <ul class="d-inline-block text-start">
+          <li>Create, edit, and delete interns</li>
+          <li>Create, edit, and delete quizzes</li>
+          <li>Create, edit, and delete quiz questions</li>
+        </ul>
+      </div>
+      <button class="btn btn-primary d-block mx-auto mt-4">Go to Admin Dashboard</button>
+    </div>
+  
+    <div *ngIf="userType === 'INTERN'">
+      <p class="text-center">Welcome, Intern! Here's what you can do:</p>
+      <div class="text-center">
+        <ul class="d-inline-block text-start">
+          <li>Take quizzes</li>
+          <li>View quiz results</li>
+        </ul>
+      </div>
+      <button class="btn btn-primary d-block mx-auto mt-4">Go to Intern Dashboard</button>
+    </div>
+  </div>
+  
